@@ -4,7 +4,7 @@ with open('input.txt') as f:
     data = f.read().splitlines()
     data = [[int(num) for num in line.split(' ')] for line in data]
 
-def is_report_safe(report):
+def report_is_safe(report):
     d = 0
     for i in range(len(report)-1):
         distance = report[i+1]-report[i]
@@ -22,18 +22,18 @@ def is_report_safe(report):
 
 counter = 0
 for report in data:
-    counter += 1 if is_report_safe(report) else 0
+    counter += 1 if report_is_safe(report) else 0
 print(counter)
 
 # Part Two
 
 counter = 0
 for report in data:
-    if  is_safe := is_report_safe(report):
+    if  is_safe := report_is_safe(report):
         counter += 1
     else:
         for i in range(len(report)):
-            if is_report_safe(report[:i]+report[i+1:]):
+            if report_is_safe(report[:i]+report[i+1:]):
                 counter += 1
                 break
 print(counter)
