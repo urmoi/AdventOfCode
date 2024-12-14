@@ -1,4 +1,4 @@
-# https://adventofcode.com/2024/day/13
+# https://adventofcode.com/2024/day/14
 
 import re
 
@@ -32,9 +32,9 @@ def calc_positions(time):
 def calc_safety_factor(positions):
     factor = 1
     for i in range(4):
-        l, r = (0, SPACE[0]//2-1) if i<2 else (SPACE[0]//2+1, SPACE[0]-1)
-        u, d = (0, SPACE[1]//2-1) if i%2 else (SPACE[1]//2+1, SPACE[1]-1)
-        quadrant = [(px, py) for px, py in positions if l <= px <= r and u <= py <= d]
+        lb, rb = (0, SPACE[0]//2-1) if i<2 else (SPACE[0]//2+1, SPACE[0]-1)
+        ub, db = (0, SPACE[1]//2-1) if i%2 else (SPACE[1]//2+1, SPACE[1]-1)
+        quadrant = [(px, py) for px, py in positions if lb <= px <= rb and ub <= py <= db]
         factor *= len(quadrant)
     return factor
 
